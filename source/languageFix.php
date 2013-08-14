@@ -17,8 +17,8 @@ require_once dirname(__FILE__) . "/oxLanguageFixer.php";
 $sDefaultLanguage = 'de';
 // default theme to work with
 $sDefaultTheme = 'azure';
-
-
+// use languageTransformation.php?
+$blUseLanguageTransformation = true;
 /**
  * End of script configuration
  */
@@ -36,11 +36,12 @@ if ( !$langFix->fixMappedConstants( '.' ) ) {
 }
 
 // optional
-$langFix->setSourcePath( oxConfig::getInstance()->getAppDir() . 'views/' . $sDefaultTheme . '/tpl' );
-$langFix->setMapPath(  __DIR__ . '/languageTransformation.php' );
-if ( !$langFix->fixMappedConstants( '.' ) ) {
-    echo 'Error accessing templates at: ' . $langFix->getSourcePath() . ' using map: ' . $langFix->getMapPath() . PHP_EOL;
+if ( $blUseLanguageTransformation ) {
+    $langFix->setSourcePath( oxConfig::getInstance()->getAppDir() . 'views/' . $sDefaultTheme . '/tpl' );
+    $langFix->setMapPath(  __DIR__ . '/languageTransformation.php' );
+    if ( !$langFix->fixMappedConstants( '.' ) ) {
+        echo 'Error accessing templates at: ' . $langFix->getSourcePath() . ' using map: ' . $langFix->getMapPath() . PHP_EOL;
+    }
 }
-
 
 
