@@ -2,52 +2,33 @@ languageFixer
 =============
 Warning! The tool provided here is not an official OXID release. Use this at your own risk. Make changes to the script at your own risk. While this will not break your shop it might change your templates, because that's what this tool is meant to do.
 
-This script is meant to remove all maps from given theme's template, and use constants from the language file instead. 
-It searches through the template files in the theme, and replaces all the usages of it with the key the map is mapped to.
-Since maps can link to different translations, the script only checks it with one language, defined in the script.
-Additionally, some keys were changed, and with the use of languageTransformation.php, one key is replaced with the other, where defined in languageTransformation.php.
+This script is meant to remove all maps from the given theme's template, and uses constants from the language file instead. 
+It searches through the template files in the theme, and replaces all keys that are mapped via map.php by a proper language key.
+Please note that this script can only replace language keys that are used by either English or German map.php.
+Additionally, some keys were changed for logical or orthographical reasons. Please use languageTransformation.php to replace the old keys by the new ones. Please feel free to adapt this file by your own needs.
 
 
-Usage.
+##Usage.
 
 
-In order to use this tool you need some basic knowledge in PHP, and knowledge of your shop.
+In order to use this tool you need some basic knowledge in PHP, and knowledge of your OXID eShop.
 Recommended steps:
+
 1. Backup your shop template files.
+1. Move this script directory (source/) to the shop's root directory.
+1. Edit languageFix.php by changing the following variables to your needs:
+ 1. $sDefaultLanguage - change to the language locale you want the script to be based on (for explanation, read below).
+ 1. $sDefaultTheme - theme to work with. The script will look for theme defined here, and change it's template files.
+ 1. $blUseLanguageTransformation - use languageTransformation.php?
+1. Save the modified file.
+1. To execute the script, you can use the command "php languageFix.php" from within the directory (if php compiler is reachable via command line), or fire up your browser at http://yourshop.com/language_fix_script/source/languageFix.php.
 
-2. Move this script directory to the shop's source directory.
+##Additional information about the script.
 
-3. Edit languageFix.php, in there, change the following variables to your needs:
-
-   a) $sDefaultLanguage - change to the language you want the script to be based upon(for explanation, read below).
-
-   b) $sDefaultTheme - theme to work with. Script will look for theme defined here, and change it's template.
-
-   c) $blUseLanguageTransformation - should languageTransformation.php be used.
-
-4. Save the modified file.
-
-5. To execute the script, you can use the command "php languageFix.php" from within the directory (if php compiler is reachable via command line), or from your shop's url ("http://yourshop.com/language_fix_script/source/languageFix.php"  ).
-
-Additional information about the script.
-
-
-If script doesn't run, make sure the path to the bootstrap is correct, especially if you're not running 
-it from suggested directory.
-
-In 5.1 shop version, mapped constants were removed from the templates, but the support for them is still there.
-
-If you need to use your maps, you can still use it, or if you want to clean your templates from maps with a bit more ease, you can use this script.
-
-"languageTransformation.php" is used to replace one language key with the other, and if you need to, you can also
-add your own changes there, if you're using the script.
-
-File takes a map file based on the language defined inside the script, and looks for it's keys in defined theme's templates. When it finds the key, it replaces the current value with the one key links to. i.e:
+* If the script doesn't run, make sure the path to the shop's bootstrap.php is correct in languageFix.php, especially if you're not running it from the suggested directory.
+* In OXID eShop version 5.1, the mapped constants were removed from the templates, but the mapping feature still exists.
+* "languageTransformation.php" is used to replace one language key with another. If you want, you can also add your own changes there, if you're using the script.
+* File takes a map file based on the language defined inside the script, and looks for its keys in defined theme's templates. When it finds the key, it replaces the current value with the one key the map.php linked to. i.e:
 'ADD_TO_CART' => 'TO_CART' // if the script finds key 'ADD_TO_CART', it replaces the occurence with 'TO_CART'.
-
-The script only looks for occurences with following regular expressions: '/oxmultilang +ident="([A-Z\_0-9]+)"/i' and 
-'/"([A-Z\_0-9]+)"\|oxmultilangassign/i', to prevent it from changing non translation keys.
-
-
-
-
+* The script only looks for occurences with the following regular expressions: '/oxmultilang +ident="([A-Z\_0-9]+)"/i' and 
+'/"([A-Z\_0-9]+)"\|oxmultilangassign/i'.
