@@ -207,5 +207,17 @@ $aMap = array(
 'MESSAGE_NEWSLETTER_NOT_ABLE_TO_SEND_EMAIL'                   => 'MESSAGE_NOT_ABLE_TO_SEND_EMAIL',
 'MESSAGE_NEWSLETTER_SENT_CONFIRMATION'                        => 'MESSAGE_SENT_CONFIRMATION_EMAIL',
 'MESSAGE_NEWSLETTER_SUBSCRIPTION_CENCELED'                    => 'MESSAGE_NEWSLETTER_SUBSCRIPTION_CANCELED',
-'ADD_TO_CART'                                                 => 'TO_CART'
+'ADD_TO_CART'                                                 => 'TO_CART',
+
+// mobile theme specific changes. Should not break normal shop
+'BANK_CODE_3'                                                 => 'BANK_CODE',
+'BANK_2'                                                      => 'BANK',
+'BANK_ACCOUNT_NUMBER_2'                                       => 'BANK_ACCOUNT_NUMBER',
+'BANK_ACCOUNT_HOLDER_2'                                       => 'BANK_ACCOUNT_HOLDER',
+'ADDRESS_2'                                                   => 'ADDRESS',
+'BILLING_ADDRESS_2'                                           => 'BILLING_ADDRESS',
+'ERROR_404_PREURL'                                            => 'ERROR_404',
+'ERROR_MESSAGE_VERSION_EXPIRED3'                              => 'ERROR_MESSAGE_VERSION_EXPIRED1',
+'COUPON_NOT_ACCEPTED1'                                        => 'COUPON_NOT_ACCEPTED',
+'COUPON_NOT_ACCEPTED2'                                        => 'COUPON_NOT_ACCEPTED',
 );
