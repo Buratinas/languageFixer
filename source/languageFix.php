@@ -7,7 +7,7 @@
  * @copyright (c) OXID eSales AG 2003-#OXID_VERSION_YEAR#
  * @version   SVN: $Id: languageFix.php 56456 13.3.22 16.02Z tadas.rimkus $
  */
-require_once dirname(__FILE__) . "/../../source/bootstrap.php";
+require_once dirname(__FILE__) . "/../bootstrap.php";
 require_once dirname(__FILE__) . "/oxLanguageFixer.php";
 
 /**
